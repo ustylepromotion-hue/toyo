@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>豊橋まちあるきスタンプ ルートメーカー｜寄りたい場所を選ぶだけで最短巡回ルートを自動生成</title>
+  <meta name="description" content="豊橋まちあるきスタンプラリー対象の37施設から、寄りたいスポットを選ぶだけで最短の巡回ルートへ自動で並び替え、Googleマップで開けます。徒歩・車に対応。豊橋観光・スタンプラリーのお供に。" />
+  <meta name="keywords" content="豊橋まちあるきスタンプ,豊橋 スタンプラリー,豊橋 まちあるき,豊橋観光,豊橋 ルート,吉田城,豊橋駅,ルートメーカー,スタンプラリー 最短ルート" />
+  <meta name="author" content="DAX_ST50_LINE" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#ff4f88" />
+
+  <!-- Favicon (emoji SVG, no external file required) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%9A%8B%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%9A%8B%3C%2Ftext%3E%3C%2Fsvg%3E" />
+
+  <!--
+    デプロイ後にやること（重要）:
+    1. 下の og:url と canonical を本番の絶対URLに書き換える
+    2. og:image / twitter:image は相対パスでも多くは動くが、X / LINE では
+       絶対URL（例: https://example.com/ogp.jpg）の方が確実
+  -->
+  <link rel="canonical" href="./" />
+  <meta property="og:url" content="./" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="豊橋まちあるきスタンプ ルートメーカー" />
+  <meta property="og:title" content="豊橋まちあるきスタンプ ルートメーカー｜最短巡回ルートを自動生成" />
+  <meta property="og:description" content="豊橋まちあるきスタンプ対象37施設から、寄りたい場所を選ぶだけで最短の巡回ルートへ並び替え、Googleマップで開けます。" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="ogp.jpg" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="豊橋まちあるきスタンプ ルートメーカー" />
+  <meta name="twitter:description" content="豊橋まちあるきスタンプ対象37施設から、寄りたい場所を選ぶだけで最短の巡回ルートを自動生成。Googleマップですぐ開けます。" />
+  <meta name="twitter:image" content="ogp.jpg" />
+  <meta name="twitter:creator" content="@DAX_ST50_LINE" />
+
+  <!-- 構造化データ (WebApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "豊橋まちあるきスタンプ ルートメーカー",
+    "description": "豊橋まちあるきスタンプラリー対象37施設から寄りたい場所を選ぶだけで、最短巡回ルートへ自動で並び替え、Googleマップで開けるWebアプリ。",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "ja",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+    "author": {
+      "@type": "Person",
+      "name": "DAX_ST50_LINE",
+      "url": "https://x.com/DAX_ST50_LINE"
+    },
+    "about": {
+      "@type": "Event",
+      "name": "豊橋まちあるきスタンプ",
+      "location": {
+        "@type": "Place",
+        "name": "愛知県豊橋市",
+        "address": { "@type": "PostalAddress", "addressRegion": "愛知県", "addressLocality": "豊橋市", "addressCountry": "JP" }
+      }
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Fredoka:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <div class="container">
+    <header class="hero">
+      <figure class="hero-image">
+        <img src="hero-light.jpg" alt="豊橋まちあるきスタンプ ルートメーカー - 豊橋駅前大通りから吉田城を望む路面電車と青空" width="1280" height="853" fetchpriority="high" decoding="async" />
+      </figure>
+      <h1 class="visually-hidden">豊橋まちあるきスタンプ ルートメーカー</h1>
+      <p class="hero-sub">寄りたいスポットを選ぶだけで、最短ルートに並び替えてGoogleマップで開くことができます<br />各ボタンやチェックボックスを選択し、ルート作成ボタンを押して完了です⭐️</p>
+    </header>
+
+    <section class="panel panel-start">
+      <div class="panel-head">
+        <span class="pill pill-start">START</span>
+        <label for="startSelect">開始地点</label>
+      </div>
+      <div class="select-wrap">
+        <select id="startSelect"></select>
+      </div>
+    </section>
+
+    <section class="panel panel-waypoints">
+      <div class="panel-head">
+        <span class="pill pill-way">VIA</span>
+        <label>中継地点 <span class="hint">（最大10件・自由に選択してOKです！）</span></label>
+        <span class="counter" id="waypointCounter">0 / 10</span>
+      </div>
+      <div class="toolbar">
+        <input type="search" id="filterInput" placeholder="スポット名・住所で絞り込み 🔍" />
+      </div>
+      <div id="waypointList" class="checkbox-list"></div>
+    </section>
+
+    <section class="panel panel-end">
+      <div class="panel-head">
+        <span class="pill pill-end">GOAL</span>
+        <label for="endSelect">終了地点</label>
+      </div>
+      <div class="select-wrap">
+        <select id="endSelect"></select>
+      </div>
+    </section>
+
+    <section class="panel panel-mode">
+      <div class="panel-head">
+        <span class="pill pill-mode">MODE</span>
+        <label>移動手段</label>
+      </div>
+      <div class="mode-row" id="modeRow">
+        <button type="button" class="mode-chip is-active" data-mode="walking">🚶 徒歩</button>
+        <button type="button" class="mode-chip" data-mode="driving">🚗 車</button>
+      </div>
+    </section>
+
+    <div class="button-row">
+      <button id="randomBtn" class="btn btn-soft">🎲 おまかせ</button>
+      <button id="resetBtn" class="btn btn-ghost">♻️ 全解除</button>
+      <button id="buildBtn" class="btn btn-primary">✨ ルート作成</button>
+    </div>
+
+    <section class="panel panel-result" id="resultPanel" hidden>
+      <div class="panel-head">
+        <span class="pill pill-result">ROUTE</span>
+        <h2>最適化ルート</h2>
+        <span class="counter" id="distanceCounter"></span>
+      </div>
+      <ol id="routeResult" class="route-list"></ol>
+      <div class="result-actions">
+        <a id="mapLink" class="btn btn-map" href="#" target="_blank" rel="noopener noreferrer">🗺️ Googleマップで開く</a>
+        <button id="copyBtn" class="btn btn-ghost" type="button">🔗 URLをコピー</button>
+        <a id="shareBtn" class="btn btn-share" href="#" target="_blank" rel="noopener noreferrer">📣 ルートメーカーをシェア</a>
+      </div>
+      <p id="copyToast" class="toast" hidden>コピーしました ✓</p>
+    </section>
+
+    <footer class="foot">
+      <a class="produced-by" href="https://x.com/DAX_ST50_LINE" target="_blank" rel="noopener noreferrer">
+        Produced by <strong>DAX_ST50_LINE</strong>
+        <span class="x-mark" aria-hidden="true">𝕏</span>
+      </a>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
